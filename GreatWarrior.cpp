@@ -2,6 +2,37 @@
 #include "GreatWarrior.h"
 using namespace std;
 
+string Character :: getHoldingOfLand(string name){
+    Land* traverse = head;
+    while(traverse){
+        if(name.compare(traverse->getName()) == 0){
+            return traverse->getHolding();
+            break;
+        }
+    }
+    return " ";
+};
+bool Character :: feedSoldier(){
+    if(gold > manpower){
+        gold-=manpower;
+    }
+    else{ // if dont have enough gold 
+        manpower = gold;
+        cout << "You lost one of your lands to rebellions since you don't have enough army." << endl;
+        return !(this->removeLand("dont care",true));
+
+    }
+    return true;
+}
+
+void  Character :: killManpower(int how_many){
+    manpower= manpower - how_many;
+}
+
+void Character ::  buyManpower(int how_many){
+    manpower += how_many;
+}
+
 
 Character :: Character(){
     head = NULL;
@@ -49,25 +80,29 @@ void Character :: getTaxes(){
 
 }
 
-bool Character :: removeLand(string name){ // return true if there are no land left and delete character from list
+bool Character :: removeLand(string name,bool remove_last_one = false){ // return true if there are no land left and delete character from list
     Land* traverse = head;
     Land* traverseTail;
-    if(head->next == NULL){
-        delete head;
-        return true;    
-    }
-    else {    
-        while(traverse->next && traverse->getName() != name){
-            traverseTail = traverse;
-            traverse  =traverse->next;
+    if(remove_last_one){
+        while(traverse->next){
+            delete traverse;
         }
+    }
+    else{
+            while(traverse->next && traverse->getName() != name){
+                traverseTail = traverse;
+                traverse  =traverse->next;
+            }
 
-        if(traverse->getName() == name){
-            Land* temp = traverse;
-            traverseTail->next = traverse->next;
-            delete temp;
-        }
+            if(traverse->getName() == name){
+                Land* temp = traverse;
+                traverseTail->next = traverse->next;
+                delete temp;
+            }
     }
+    if(head == NULL)
+        return true;
+    
     return false;
 }
 
@@ -135,7 +170,8 @@ void CharacterList ::  addCharacter(Character& c){
                 
             }
         }
-        
+        Character c;
+        return c;
     }
 
     
@@ -144,6 +180,8 @@ void CharacterList ::  addCharacter(Character& c){
             if(arr[i].isOwnLand(name))
                 return arr[i];
         }
+        Character c;
+        return c;
     }
 
 

@@ -6,7 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-#include "GreatWarrior.h"
 #include "GreatWarrior.cpp"
 
 /*	Define necessary classes and attributes in GreatWarrior.h and GreatWarrior.cpp */
@@ -116,6 +115,13 @@ int main() {
             int order;
             cin >> order;
 
+            if(mycharacter.getGold() > order * 5 ){
+                mycharacter.buyManpower(order);
+                cout << "Order successful. You have " << order << " manpower." << endl;
+            }
+            else
+                cout << "You do not have enough money." << endl;
+            
             ///// FILL HERE /////
 
             /* Check if you have enough money to get the requested manpower:
@@ -141,7 +147,8 @@ int main() {
         default:
             cout << "You entered an invalid value. Try again." << endl;
         }
-
+        if(!endOfTurn(mycharacter,round))
+            break;
         ///// FILL HERE /////
 
         /*	Check if the game is over in two cases:
@@ -236,6 +243,18 @@ void listLands(CharacterList& charList) {
 
 bool endOfTurn(Character& player, int round) { //return a bool value that indicates if the game is over or not.
 
+    player.getTaxes();
+    bool can_go_on = player.feedSoldier();
+    if(can_go_on){
+        cout << "Turn " << round << ": " << " " << player.getName()<< " has " << player.getNumberOfLand()<< " land(s), " <<player.getManPower()<< " manpower and " << player.getGold() << " golds." << endl;
+        return true;
+    }
+    else{
+        cout << "You are no longer a great warrior. You survived " << round << " turns." << endl;
+        cout << endl;
+        cout << "GAME OVER." << endl;
+        return false;
+    }
     ///// FILL HERE /////
 
     /* End of turn evaluations:

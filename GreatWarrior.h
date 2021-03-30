@@ -1,4 +1,3 @@
-#pragma once 
 
 #include <iostream>
 #include "land.h"
@@ -12,11 +11,16 @@ class Character{
     int numOfLands;
     Land* head;
     public:
+    // getters
     string getName(){return name;}
     int getManPower(){return manpower;}
+    int getGold(){return gold;}
     string getHoldingOfLand(string);
+    int getNumberOfLand(){return numOfLands;}
+
     void killManpower(int);
     void buyManpower(int);
+    bool feedSoldier();
     void writeLands();
     bool isOwnLand(string);
     Character(string,int,int,int);
@@ -24,7 +28,7 @@ class Character{
     ~Character();
     void getTaxes();
     void addLand(Land* node);
-    bool removeLand(string names); // RETURN TRUE WHEN NO LAND LEFT
+    bool removeLand(string ,bool); // RETURN TRUE WHEN NO LAND LEFT
 
 };
 
