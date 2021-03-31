@@ -46,7 +46,7 @@ void Character :: writeLands(){
 }
 
 
-Character :: Character(string inname,int inmanpower = 0, int ingold = 0,int innumoflands = 0) : name(inname),manpower(inmanpower),gold(ingold),numOfLands(innumoflands){
+Character :: Character(string inname,int inmanpower, int ingold ,int innumoflands) : name(inname),manpower(inmanpower),gold(ingold),numOfLands(innumoflands){
     head = NULL;
 }
 
@@ -80,7 +80,7 @@ void Character :: getTaxes(){
 
 }
 
-bool Character :: removeLand(string name,bool remove_last_one = false){ // return true if there are no land left and delete character from list
+bool Character :: removeLand(string name,bool remove_last_one ){ // return true if there are no land left and delete character from list
     Land* traverse = head;
     Land* traverseTail;
     if(remove_last_one){

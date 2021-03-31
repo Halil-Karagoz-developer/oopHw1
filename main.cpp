@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-#include "GreatWarrior.cpp"
+#include "GreatWarrior.h"
 
 /*	Define necessary classes and attributes in GreatWarrior.h and GreatWarrior.cpp */
 
@@ -170,6 +170,7 @@ void readData(string fileName, CharacterList& charList) {
 
     fstream dataFile(fileName.c_str());
 
+
     if (dataFile.is_open()) {
 
         string word;
@@ -211,8 +212,11 @@ void readData(string fileName, CharacterList& charList) {
 
         dataFile.close();
     }
-    else cout << "Unable to open the file" << endl;
-
+    else {
+        cout << "Unable to open the file" << endl;
+        exit(1);
+    }
+ 
     return;
 }
 
