@@ -6,13 +6,27 @@ using namespace std;
 
 class Land{
     private : 
-    string name;
-    string holding;
+    char* name;
+    char* holding;
     public : 
-    string getName(){return name;}
-    string getHolding(){return holding;}
-    Land(string inname, string inholding) : name(inname), holding(inholding) {}
-    Land(Land& in) {name = in.name ; holding = in.holding; }
+    char* getName(){return name;}
+    char* getHolding(){return holding;}
+    Land(string inname, string inholding) {
+        name = new char[20];
+        holding = new char[20];
+        strcpy(name,inname.c_str());
+        strcpy(holding,inholding.c_str());
+    }
+    Land( const Land& in) {
+        name = new char[20];
+        holding = new char[20];
+        strcpy(name,in.name);
+        strcpy(holding,in.holding);
+    }
+    ~Land(){
+        delete [] name;
+        delete [] holding;
+    }
     Land* next;
 };
 
