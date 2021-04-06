@@ -47,9 +47,11 @@ int main()
 
     /*  Create your constant general object and your own character object,
         then add your character into characters list */
-    Land *capital = new Land(land, "village"); // city can change
+    Character const General(general);
 
-    Character mycharacter(name, 0, 500);
+
+    Character mycharacter(name, 1, 50);
+    Land *capital = new Land(land, "village"); // village can change
     mycharacter.addLand(capital);
     charList.addCharacter(mycharacter);
     ///// FILL HERE /////
@@ -67,7 +69,7 @@ int main()
         case 1:
         {
             cout << "You have rested in your palace." << endl;
-            cout << "You've talked with your general " << general << "." << endl;
+            cout << "You've talked with your general " << General.getName() << "." << endl;
 
             round++;
             break;
