@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string.h>
 #include "GreatWarrior.h"
+#include "GreatWarrior.cpp"
 
 /*	Define necessary classes and attributes in GreatWarrior.h and GreatWarrior.cpp */
 
