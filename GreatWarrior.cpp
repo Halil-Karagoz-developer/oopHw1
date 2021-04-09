@@ -214,9 +214,8 @@ bool Character ::isOwnLand(string name)
 
 CharacterList::CharacterList()
 {
-    arr = new Character[10];
+    arr = NULL;
     size = 0;
-    maxsize = 10;
 }
 
 CharacterList::~CharacterList()
@@ -226,17 +225,14 @@ CharacterList::~CharacterList()
 
 void CharacterList ::addCharacter(Character &c)
 {
-    if (size == maxsize)
-    {
-        Character *newarray = new Character[maxsize * 2];
-        for (int i = 0; i < maxsize; i++)
+        Character *newarray = new Character[size+1];
+        for (int i = 0; i < size; i++)
         {
             newarray[i] = arr[i];
         }
         delete[] arr;
         arr = newarray;
-        maxsize = 2 * maxsize;
-    }
+    
     arr[size++] = c;
 }
 void CharacterList ::delCharacter(string name)

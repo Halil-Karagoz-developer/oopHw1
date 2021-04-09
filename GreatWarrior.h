@@ -42,7 +42,6 @@ class Character{
 class CharacterList{
     Character* arr;
     int size;
-    int maxsize;
     public:
     friend void listCharacters(CharacterList&);
     friend void listLands(CharacterList&);
