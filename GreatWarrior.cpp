@@ -1,8 +1,14 @@
+//////////////////////////////////
+/*          <Halil Faruk Karagöz>         */
+/*          <150180014>           */
+//////////////////////////////////
+
+
 #include <iostream>
 #include "GreatWarrior.h"
 using namespace std;
 
-void Character :: assign(const Character &src)
+void Character ::assign(const Character &src)
 {
     head = NULL;
     name.assign(src.name);
@@ -12,7 +18,7 @@ void Character :: assign(const Character &src)
     Land *traverse = src.head;
     while (traverse)
     {
-        Land *node = new Land(*traverse);
+        Land *node = new Land(*traverse); // CALLED COPY CONSTRUCTOR 
         node->next = NULL;
         traverse = traverse->next;
         if (head == NULL)
@@ -50,8 +56,6 @@ string Character ::getHoldingOfLand(string name)
     return " ";
 }
 
-
-
 void Character ::feedSoldier()
 {
 
@@ -61,8 +65,10 @@ void Character ::feedSoldier()
     }
     else
     { // if dont have enough gold but not zero
+        cout << manpower - gold  << " soldiers run away from your army because you don't have enough gold to feed them." << endl;
+        
         manpower = gold;
-        cout << gold - manpower << " soldiers run away from your army because you don't have enough gold to feed them." << endl;
+
         gold = 0;
     }
 }
@@ -136,8 +142,8 @@ void Character ::getTaxes()
     }
 }
 
-bool Character ::removeLand(string name, bool remove_last_one)
-{ // return true if there are no land left and delete character from list
+bool Character ::removeLand(string name, bool remove_last_one) // return true if there are no land left and delete character from list
+{ 
     if (head == NULL)
         return true;
     Land *traverse = head;
@@ -227,14 +233,14 @@ CharacterList::~CharacterList()
 
 void CharacterList ::addCharacter(Character &c)
 {
-        Character *newarray = new Character[size+1];
-        for (int i = 0; i < size; i++)
-        {
-            newarray[i].assign(arr[i]);
-        }
-        delete[] arr;
-        arr = newarray;
-    
+    Character *newarray = new Character[size + 1];
+    for (int i = 0; i < size; i++)
+    {
+        newarray[i].assign(arr[i]);
+    }
+    delete[] arr;
+    arr = newarray;
+
     arr[size++].assign(c);
 }
 void CharacterList ::delCharacter(string name)

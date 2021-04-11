@@ -1,3 +1,9 @@
+//////////////////////////////////
+/*          <Halil Faruk Karagöz>         */
+/*          <150180014>           */
+//////////////////////////////////
+
+
 #pragma once 
 #include <iostream>
 #include "land.h"
@@ -18,7 +24,7 @@ class Character{
     string getHoldingOfLand(string);
     int getNumberOfLand() const  {return numOfLands;}
 
-    void assign(const Character&); // overloading assign operator
+    void assign(const Character&); // assign character
 
 
     void killManpower(int);
@@ -33,6 +39,7 @@ class Character{
     Character(const Character& c);
 
     void getTaxes();
+    
     void addLand(Land* node);
     bool removeLand(string ,bool = false); // RETURN TRUE WHEN NO LAND LEFT
 

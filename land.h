@@ -1,3 +1,9 @@
+//////////////////////////////////
+/*          <Halil Faruk Karagöz>         */
+/*          <150180014>           */
+//////////////////////////////////
+
+
 #pragma once 
 #include <iostream>
 #include <string.h>
