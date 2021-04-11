@@ -18,7 +18,7 @@ class Character{
     string getHoldingOfLand(string);
     int getNumberOfLand() const  {return numOfLands;}
 
-    Character& operator=(const Character&); // overloading assign operator
+    void assign(const Character&); // overloading assign operator
 
 
     void killManpower(int);

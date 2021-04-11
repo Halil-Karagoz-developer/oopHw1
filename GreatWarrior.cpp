@@ -2,7 +2,7 @@
 #include "GreatWarrior.h"
 using namespace std;
 
-Character &Character::operator=(const Character &src)
+void Character :: assign(const Character &src)
 {
     head = NULL;
     name.assign(src.name);
@@ -29,7 +29,6 @@ Character &Character::operator=(const Character &src)
             traverse2->next = node;
         }
     }
-    return *this;
 }
 Character ::Character(const Character &c)
 {
@@ -49,7 +48,10 @@ string Character ::getHoldingOfLand(string name)
         traverse = traverse->next;
     }
     return " ";
-};
+}
+
+
+
 void Character ::feedSoldier()
 {
 
@@ -228,12 +230,12 @@ void CharacterList ::addCharacter(Character &c)
         Character *newarray = new Character[size+1];
         for (int i = 0; i < size; i++)
         {
-            newarray[i] = arr[i];
+            newarray[i].assign(arr[i]);
         }
         delete[] arr;
         arr = newarray;
     
-    arr[size++] = c;
+    arr[size++].assign(c);
 }
 void CharacterList ::delCharacter(string name)
 {

@@ -282,6 +282,9 @@ bool endOfTurn(Character &player, int round)
 
     cout << "Turn " << round << ": "
          << " " << player.getName() << " has " << player.getNumberOfLand() << " land(s), " << player.getManPower() << " manpower and " << player.getGold() << " golds." << endl;
+    
+    
+    
     return true;
 
     ///// FILL HERE /////
